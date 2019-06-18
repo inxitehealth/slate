@@ -630,7 +630,7 @@ Search patients
     "deceased_reason": "string",
     "deceased_date": "2019-06-18",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -1262,7 +1262,7 @@ deceased_date: "2019-06-18"
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -1497,7 +1497,7 @@ Get a patient record
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -1688,13 +1688,13 @@ Get patient appointments
     },
     "status": "pending",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -2116,13 +2116,13 @@ Get a patient appointment
   },
   "status": "pending",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -3028,13 +3028,13 @@ Get current patient health score
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -3042,7 +3042,7 @@ Get current patient health score
     }
   ],
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -3236,13 +3236,13 @@ Get a patient health score
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -3250,7 +3250,7 @@ Get a patient health score
     }
   ],
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -4996,14 +4996,14 @@ options: string
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -5181,14 +5181,14 @@ Get all patient shares
     "name": "string",
     "hash": "string",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "anonymous": true,
     "active": true,
-    "expiration_date": "2019-06-18T14:54:51Z",
+    "expiration_date": "2019-06-18T15:56:49Z",
     "share_url": "string",
     "image_url": "string",
     "image": "string",
@@ -5393,14 +5393,14 @@ Get a patient share
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -5650,7 +5650,7 @@ $.ajax({
 const fetch = require('node-fetch');
 const inputBody = '{
   "patient_id": 0,
-  "date_time": "2019-06-18T14:54:51Z"
+  "date_time": "2019-06-18T15:56:49Z"
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -5760,7 +5760,7 @@ Create SOAR assessment
 
 ```yaml
 patient_id: 0
-date_time: "2019-06-18T14:54:51Z"
+date_time: "2019-06-18T15:56:49Z"
 ```
 
 <h3 id="create-soar-assessment-parameters">Parameters</h3>
@@ -5779,8 +5779,8 @@ date_time: "2019-06-18T14:54:51Z"
   "statusCode": 0,
   "body": {
     "PatientID": 0,
-    "RequestTime": "2019-06-18T14:54:51Z",
-    "ResponseTime": "2019-06-18T14:54:51Z",
+    "RequestTime": "2019-06-18T15:56:49Z",
+    "ResponseTime": "2019-06-18T15:56:49Z",
     "Filename": "string",
     "Errors": true,
     "report": "string",
@@ -6959,13 +6959,13 @@ Get all Health Scores for an organization
           "text": "string"
         },
         "created": {
-          "date": "2019-06-18T14:54:51Z",
+          "date": "2019-06-18T15:56:49Z",
           "first_name": "string",
           "last_name": "string",
           "user_id": 0
         },
         "updated": {
-          "date": "2019-06-18T14:54:51Z",
+          "date": "2019-06-18T15:56:49Z",
           "first_name": "string",
           "last_name": "string",
           "user_id": 0
@@ -6973,7 +6973,7 @@ Get all Health Scores for an organization
       }
     ],
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -8626,7 +8626,7 @@ postal_code: string
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -8639,13 +8639,13 @@ postal_code: string
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -8820,7 +8820,7 @@ Get Particular request status or data
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -8833,13 +8833,13 @@ Get Particular request status or data
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9039,7 +9039,7 @@ status: approve
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9052,13 +9052,13 @@ status: approve
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9258,7 +9258,7 @@ phone: string
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9271,13 +9271,13 @@ phone: string
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9459,7 +9459,7 @@ Get all requests status
     "share_hash": "string",
     "request_id": "string",
     "share_direct_image_url": "string",
-    "expiration_date": "2019-06-18T14:54:51Z",
+    "expiration_date": "2019-06-18T15:56:49Z",
     "share": {
       "first_name": "string",
       "last_name": "string",
@@ -9472,13 +9472,13 @@ Get all requests status
       "postal_code": "string",
       "access_type": "email",
       "created": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -9707,7 +9707,7 @@ Get an existing request status or data. Same as GET /shares/{shareHash}/requests
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9720,13 +9720,13 @@ Get an existing request status or data. Same as GET /shares/{shareHash}/requests
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9777,13 +9777,13 @@ Bearer
   },
   "status": "pending",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -9829,7 +9829,7 @@ Bearer
 
 ```json
 {
-  "date": "2019-06-18T14:54:51Z",
+  "date": "2019-06-18T15:56:49Z",
   "first_name": "string",
   "last_name": "string",
   "user_id": 0
@@ -9971,13 +9971,13 @@ _Patient Employer information_
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T14:54:51Z",
+        "date": "2019-06-18T15:56:49Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -9985,7 +9985,7 @@ _Patient Employer information_
     }
   ],
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -10026,13 +10026,13 @@ _Patient Employer information_
     "text": "string"
   },
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -10649,7 +10649,7 @@ _Patient Employer information_
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -11072,7 +11072,7 @@ _Patient Employer information_
 ```json
 {
   "patient_id": 0,
-  "date_time": "2019-06-18T14:54:51Z"
+  "date_time": "2019-06-18T15:56:49Z"
 }
 ```
 
@@ -11133,7 +11133,7 @@ _Patient Employer information_
 
 ```json
 {
-  "date": "2019-06-18T14:54:51Z",
+  "date": "2019-06-18T15:56:49Z",
   "first_name": "string",
   "last_name": "string",
   "user_id": 0
@@ -11222,14 +11222,14 @@ _Information on the individual who last updated the record_
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -11269,7 +11269,7 @@ _Information on the individual who last updated the record_
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T14:54:51Z",
+  "expiration_date": "2019-06-18T15:56:49Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -11282,13 +11282,13 @@ _Information on the individual who last updated the record_
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T14:54:51Z",
+      "date": "2019-06-18T15:56:49Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -11354,13 +11354,13 @@ _Information on the individual who created the share_
   "postal_code": "string",
   "access_type": "email",
   "created": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T14:54:51Z",
+    "date": "2019-06-18T15:56:49Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -11411,3 +11411,15 @@ _Information on language_
 | ---- | ------ | -------- | ------------ | -------------------- |
 | name | string | false    | none         | Name of the language |
 | id   | string | false    | none         | Lanuage ID           |
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "WebAPI",
+  "description": "This documentation is for the INXITE Platform API.",
+
+
+
+  "name": "INXITE API"
+}
+</script>
