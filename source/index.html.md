@@ -35,7 +35,7 @@ Email: <a href="mailto:development@inxitehealth.com">Support</a>
 
 <h1 id="inxite-api-login">Login</h1>
 
-## post\_\_login
+## Obtain an Access Token
 
 > Code samples
 
@@ -179,8 +179,6 @@ func main() {
 
 `POST /login`
 
-_Obtain an Access Token_
-
 Log in to the INXITE platform to obtain an Access Token
 
 > Body parameter
@@ -193,16 +191,15 @@ api_key: string
 api_secret: string
 ```
 
-<h3 id="post__login-parameters">Parameters</h3>
+<h3 id="obtain-an-access-token-parameters">Parameters</h3>
 
-| Name         | In   | Type   | Required | Description                                                                                                                                                                             |
-| ------------ | ---- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| body         | body | object | false    | none                                                                                                                                                                                    |
-| » username   | body | string | true     | Only required if the API key being used was issued to an organization                                                                                                                   |
-| » password   | body | string | true     | Required if the API key being used was issued to an organization                                                                                                                        |
-| » time_zone  | body | string | true     | One of the tz database names as maintained by the IANA at https://www.iana.org/time-zones or, for convenience, listed here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones |
-| » api_key    | body | string | true     | INXITE API Key                                                                                                                                                                          |
-| » api_secret | body | string | true     | INXITE API Secret                                                                                                                                                                       |
+| Name       | In   | Type   | Required | Description                                                                                                                                                                             |
+| ---------- | ---- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| username   | body | string | true     | Only required if the API key being used was issued to an organization                                                                                                                   |
+| password   | body | string | true     | Required if the API key being used was issued to an organization                                                                                                                        |
+| time_zone  | body | string | true     | One of the tz database names as maintained by the IANA at https://www.iana.org/time-zones or, for convenience, listed here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones |
+| api_key    | body | string | true     | INXITE API Key                                                                                                                                                                          |
+| api_secret | body | string | true     | INXITE API Secret                                                                                                                                                                       |
 
 > Example responses
 
@@ -217,7 +214,7 @@ api_secret: string
 }
 ```
 
-<h3 id="post__login-responses">Responses</h3>
+<h3 id="obtain-an-access-token-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description | Schema                          |
 | ------ | ---------------------------------------------------------------- | ----------- | ------------------------------- |
@@ -228,7 +225,7 @@ api_secret: string
 This operation does not require authentication
 </aside>
 
-## post\_\_refresh
+## Obtain a new Access Token
 
 > Code samples
 
@@ -368,8 +365,6 @@ func main() {
 
 `POST /refresh`
 
-_Obtain a new Access Token_
-
 Obtain a new Access Token
 
 > Body parameter
@@ -378,12 +373,11 @@ Obtain a new Access Token
 refresh_token: string
 ```
 
-<h3 id="post__refresh-parameters">Parameters</h3>
+<h3 id="obtain-a-new-access-token-parameters">Parameters</h3>
 
-| Name            | In   | Type   | Required | Description              |
-| --------------- | ---- | ------ | -------- | ------------------------ |
-| body            | body | object | false    | none                     |
-| » refresh_token | body | string | false    | The Refresh Token string |
+| Name          | In   | Type   | Required | Description              |
+| ------------- | ---- | ------ | -------- | ------------------------ |
+| refresh_token | body | string | false    | The Refresh Token string |
 
 > Example responses
 
@@ -398,7 +392,7 @@ refresh_token: string
 }
 ```
 
-<h3 id="post__refresh-responses">Responses</h3>
+<h3 id="obtain-a-new-access-token-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description | Schema                          |
 | ------ | ---------------------------------------------------------------- | ----------- | ------------------------------- |
@@ -411,7 +405,7 @@ This operation does not require authentication
 
 <h1 id="inxite-api-patient">Patient</h1>
 
-## get\_\_patients
+## Search patients
 
 > Code samples
 
@@ -553,11 +547,9 @@ func main() {
 
 `GET /patients`
 
-_Search patients_
-
 Search patients
 
-<h3 id="get__patients-parameters">Parameters</h3>
+<h3 id="search-patients-parameters">Parameters</h3>
 
 | Name          | In    | Type         | Required | Description           |
 | ------------- | ----- | ------------ | -------- | --------------------- |
@@ -638,7 +630,7 @@ Search patients
     "deceased_reason": "string",
     "deceased_date": "2019-06-18",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -647,7 +639,7 @@ Search patients
 ]
 ```
 
-<h3 id="get__patients-responses">Responses</h3>
+<h3 id="search-patients-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description      | Schema |
 | ------ | ---------------------------------------------------------------- | ---------------- | ------ |
@@ -655,7 +647,7 @@ Search patients
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)  | No results found | None   |
 | 400    | [Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1) | Errors           | Inline |
 
-<h3 id="get__patients-responseschema">Response Schema</h3>
+<h3 id="search-patients-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -779,7 +771,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\_\_patients
+## Create a patient
 
 > Code samples
 
@@ -974,8 +966,6 @@ func main() {
 
 `POST /patients`
 
-_Create a patient_
-
 Create a patient.
 
 > Body parameter
@@ -1032,175 +1022,174 @@ deceased_reason: string
 deceased_date: "2019-06-18"
 ```
 
-<h3 id="post__patients-parameters">Parameters</h3>
+<h3 id="create-a-patient-parameters">Parameters</h3>
 
-| Name                        | In   | Type          | Required | Description                                                     |
-| --------------------------- | ---- | ------------- | -------- | --------------------------------------------------------------- |
-| body                        | body | object        | false    | none                                                            |
-| » organization_ids          | body | [integer]     | true     | Organization ID's array                                         |
-| » title                     | body | string        | false    | Title                                                           |
-| » first_name                | body | string        | true     | First Name                                                      |
-| » middle_name               | body | string        | false    | Middle Name                                                     |
-| » last_name                 | body | string        | true     | Last Name                                                       |
-| » suffix                    | body | string        | false    | Suffix                                                          |
-| » preferred_name            | body | string        | false    | Preferred Name                                                  |
-| » date_of_birth             | body | string(date)  | true     | Date of Birth (YYYY-MM-DD)                                      |
-| » gender                    | body | string        | true     | Gender                                                          |
-| » source_organization_id    | body | integer       | false    | Source Organization InXite ID (Default to POST Organization ID) |
-| » ssn                       | body | string        | false    | SSN Last 4                                                      |
-| » marital_status            | body | string        | false    | Marital Status                                                  |
-| » blood_type                | body | string        | false    | Blood Type                                                      |
-| » organ_donor               | body | boolean       | false    | Flag to indicate if the patient is an organ donor               |
-| » street                    | body | string        | false    | Address                                                         |
-| » city                      | body | string        | false    | City                                                            |
-| » state                     | body | string        | false    | 2 letter state code                                             |
-| » postal_code               | body | string        | true     | Postal Code (Max length 5)                                      |
-| » country_code              | body | string        | false    | Country Code                                                    |
-| » phone_home                | body | string        | true     | Home Phone                                                      |
-| » phone_home_disconnected   | body | boolean       | false    | Home Phone Disconnected                                         |
-| » phone_cell                | body | string        | false    | Cell Phone                                                      |
-| » phone_cell_disconnected   | body | boolean       | false    | Cell Phone Disconnected                                         |
-| » email                     | body | string(email) | false    | Email address                                                   |
-| » occupation                | body | string        | false    | Occupation                                                      |
-| » industry                  | body | string        | false    | Industry                                                        |
-| » employer_name             | body | string        | false    | Employer Name                                                   |
-| » employer_street           | body | string        | false    | Employer Address                                                |
-| » employer_city             | body | string        | false    | Employer City                                                   |
-| » employer_state            | body | string        | false    | 2 letter state code                                             |
-| » employer_postal_code      | body | string        | false    | Employer Postal Code (Max length 5)                             |
-| » language_id               | body | string        | false    | InXite Language ID                                              |
-| » interpreter               | body | boolean       | false    | Flag to indicate if the patient requires an interpreter         |
-| » ethnicity                 | body | string        | false    | Ethnicity                                                       |
-| » race                      | body | string        | false    | Race                                                            |
-| » guardian_name             | body | string        | false    | Emergency Contact/Guardian Name                                 |
-| » guardian_phone            | body | string        | false    | Emergency Contact/Guardian Phone                                |
-| » guardian_relationship     | body | string        | false    | Emergency Contact/Guardian Relation                             |
-| » alt_guardian_name         | body | string        | false    | Alter Emergency Contact/Guardian Name                           |
-| » alt_guardian_phone        | body | string        | false    | Alter Emergency Contact/Guardian Phone                          |
-| » alt_guardian_relationship | body | string        | false    | Alter Emergency Contact/Guardian Relation                       |
-| » caregiver_name            | body | string        | false    | Caregiver Name                                                  |
-| » caregiver_phone           | body | string        | false    | Caregiver Phone                                                 |
-| » caregiver_relationship    | body | string        | false    | Caregiver Relation                                              |
-| » caregiver_poa             | body | boolean       | false    | Does Caregiver is POA (Power of Attorney)?                      |
-| » deceased                  | body | boolean       | false    | Patient Deceased                                                |
-| » deceased_reason           | body | string        | false    | Patient Deceased Reason                                         |
-| » deceased_date             | body | string(date)  | false    | Patient Deceased Date (YYYY-MM-DD)                              |
+| Name                      | In   | Type          | Required | Description                                                     |
+| ------------------------- | ---- | ------------- | -------- | --------------------------------------------------------------- |
+| organization_ids          | body | [integer]     | true     | Organization ID's array                                         |
+| title                     | body | string        | false    | Title                                                           |
+| first_name                | body | string        | true     | First Name                                                      |
+| middle_name               | body | string        | false    | Middle Name                                                     |
+| last_name                 | body | string        | true     | Last Name                                                       |
+| suffix                    | body | string        | false    | Suffix                                                          |
+| preferred_name            | body | string        | false    | Preferred Name                                                  |
+| date_of_birth             | body | string(date)  | true     | Date of Birth (YYYY-MM-DD)                                      |
+| gender                    | body | string        | true     | Gender                                                          |
+| source_organization_id    | body | integer       | false    | Source Organization InXite ID (Default to POST Organization ID) |
+| ssn                       | body | string        | false    | SSN Last 4                                                      |
+| marital_status            | body | string        | false    | Marital Status                                                  |
+| blood_type                | body | string        | false    | Blood Type                                                      |
+| organ_donor               | body | boolean       | false    | Flag to indicate if the patient is an organ donor               |
+| street                    | body | string        | false    | Address                                                         |
+| city                      | body | string        | false    | City                                                            |
+| state                     | body | string        | false    | 2 letter state code                                             |
+| postal_code               | body | string        | true     | Postal Code (Max length 5)                                      |
+| country_code              | body | string        | false    | Country Code                                                    |
+| phone_home                | body | string        | true     | Home Phone                                                      |
+| phone_home_disconnected   | body | boolean       | false    | Home Phone Disconnected                                         |
+| phone_cell                | body | string        | false    | Cell Phone                                                      |
+| phone_cell_disconnected   | body | boolean       | false    | Cell Phone Disconnected                                         |
+| email                     | body | string(email) | false    | Email address                                                   |
+| occupation                | body | string        | false    | Occupation                                                      |
+| industry                  | body | string        | false    | Industry                                                        |
+| employer_name             | body | string        | false    | Employer Name                                                   |
+| employer_street           | body | string        | false    | Employer Address                                                |
+| employer_city             | body | string        | false    | Employer City                                                   |
+| employer_state            | body | string        | false    | 2 letter state code                                             |
+| employer_postal_code      | body | string        | false    | Employer Postal Code (Max length 5)                             |
+| language_id               | body | string        | false    | InXite Language ID                                              |
+| interpreter               | body | boolean       | false    | Flag to indicate if the patient requires an interpreter         |
+| ethnicity                 | body | string        | false    | Ethnicity                                                       |
+| race                      | body | string        | false    | Race                                                            |
+| guardian_name             | body | string        | false    | Emergency Contact/Guardian Name                                 |
+| guardian_phone            | body | string        | false    | Emergency Contact/Guardian Phone                                |
+| guardian_relationship     | body | string        | false    | Emergency Contact/Guardian Relation                             |
+| alt_guardian_name         | body | string        | false    | Alter Emergency Contact/Guardian Name                           |
+| alt_guardian_phone        | body | string        | false    | Alter Emergency Contact/Guardian Phone                          |
+| alt_guardian_relationship | body | string        | false    | Alter Emergency Contact/Guardian Relation                       |
+| caregiver_name            | body | string        | false    | Caregiver Name                                                  |
+| caregiver_phone           | body | string        | false    | Caregiver Phone                                                 |
+| caregiver_relationship    | body | string        | false    | Caregiver Relation                                              |
+| caregiver_poa             | body | boolean       | false    | Does Caregiver is POA (Power of Attorney)?                      |
+| deceased                  | body | boolean       | false    | Patient Deceased                                                |
+| deceased_reason           | body | string        | false    | Patient Deceased Reason                                         |
+| deceased_date             | body | string(date)  | false    | Patient Deceased Date (YYYY-MM-DD)                              |
 
 #### Enumerated Values
 
-| Parameter                   | Value                                  |
-| --------------------------- | -------------------------------------- |
-| » title                     | Mr.                                    |
-| » title                     | Mrs.                                   |
-| » title                     | Ms.                                    |
-| » title                     | Dr.                                    |
-| » suffix                    | Jr.                                    |
-| » suffix                    | Sr.                                    |
-| » suffix                    | II                                     |
-| » suffix                    | III                                    |
-| » suffix                    | Esq.                                   |
-| » gender                    | Male                                   |
-| » gender                    | Female                                 |
-| » marital_status            | Married                                |
-| » marital_status            | Single                                 |
-| » marital_status            | Divorced                               |
-| » marital_status            | Widowed                                |
-| » marital_status            | Separated                              |
-| » marital_status            | Domestic Partner                       |
-| » blood_type                | A Negative                             |
-| » blood_type                | A Positive                             |
-| » blood_type                | AB Negative                            |
-| » blood_type                | AB Positive                            |
-| » blood_type                | B Negative                             |
-| » blood_type                | B Positive                             |
-| » blood_type                | O Negative                             |
-| » blood_type                | O Positive                             |
-| » industry                  | Accommodations                         |
-| » industry                  | Accounting                             |
-| » industry                  | Advertising                            |
-| » industry                  | Aerospace                              |
-| » industry                  | Agriculture & Agribusiness             |
-| » industry                  | Air Transportation                     |
-| » industry                  | Apparel & Accessories                  |
-| » industry                  | Auto                                   |
-| » industry                  | Banking                                |
-| » industry                  | Beauty & Cosmetics                     |
-| » industry                  | Biotechnology                          |
-| » industry                  | Chemical                               |
-| » industry                  | Communications                         |
-| » industry                  | Computer                               |
-| » industry                  | Construction                           |
-| » industry                  | Consulting                             |
-| » industry                  | Consumer Products                      |
-| » industry                  | Education                              |
-| » industry                  | Electronics                            |
-| » industry                  | Employment                             |
-| » industry                  | Energy                                 |
-| » industry                  | Entertainment & Recreation             |
-| » industry                  | Fashion                                |
-| » industry                  | Financial Services                     |
-| » industry                  | Food & Beverage                        |
-| » industry                  | Health                                 |
-| » industry                  | Healthcare                             |
-| » industry                  | Information Technology                 |
-| » industry                  | Insurance                              |
-| » industry                  | Journalism & News                      |
-| » industry                  | Legal Services                         |
-| » industry                  | Manufacturing                          |
-| » industry                  | Media & Broadcasting                   |
-| » industry                  | Medical Devices & Supplies             |
-| » industry                  | Motion Pictures & Video                |
-| » industry                  | Music                                  |
-| » industry                  | Pharmaceutical                         |
-| » industry                  | Public Administration                  |
-| » industry                  | Public Relations                       |
-| » industry                  | Publishing                             |
-| » industry                  | Real Estate                            |
-| » industry                  | Retail                                 |
-| » industry                  | Service                                |
-| » industry                  | Sports                                 |
-| » industry                  | Technology                             |
-| » industry                  | Telecommunications                     |
-| » industry                  | Tourism                                |
-| » industry                  | Transportation                         |
-| » industry                  | Travel                                 |
-| » industry                  | Utilities                              |
-| » industry                  | Video Game                             |
-| » industry                  | Web Services                           |
-| » ethnicity                 | Hispanic or Latino                     |
-| » ethnicity                 | Not Hispanic or Latino                 |
-| » ethnicity                 | Unknown                                |
-| » ethnicity                 | Declined To Specify                    |
-| » race                      | American Indian/Alaska Native          |
-| » race                      | Asian                                  |
-| » race                      | Black/African American                 |
-| » race                      | Caucasian/White                        |
-| » race                      | Multi-Racial                           |
-| » race                      | Native Hawaiian/Other Pacific Islander |
-| » race                      | Other                                  |
-| » race                      | Unknown                                |
-| » race                      | Declined To Specify                    |
-| » guardian_relationship     | Child                                  |
-| » guardian_relationship     | Father                                 |
-| » guardian_relationship     | Grandparent                            |
-| » guardian_relationship     | Mother                                 |
-| » guardian_relationship     | Other                                  |
-| » guardian_relationship     | Sibling                                |
-| » guardian_relationship     | Spouse                                 |
-| » alt_guardian_relationship | Child                                  |
-| » alt_guardian_relationship | Father                                 |
-| » alt_guardian_relationship | Grandparent                            |
-| » alt_guardian_relationship | Mother                                 |
-| » alt_guardian_relationship | Other                                  |
-| » alt_guardian_relationship | Sibling                                |
-| » alt_guardian_relationship | Spouse                                 |
-| » caregiver_relationship    | Child                                  |
-| » caregiver_relationship    | Father                                 |
-| » caregiver_relationship    | Grandparent                            |
-| » caregiver_relationship    | Mother                                 |
-| » caregiver_relationship    | Other                                  |
-| » caregiver_relationship    | Sibling                                |
-| » caregiver_relationship    | Spouse                                 |
+| Parameter                 | Value                                  |
+| ------------------------- | -------------------------------------- |
+| title                     | Mr.                                    |
+| title                     | Mrs.                                   |
+| title                     | Ms.                                    |
+| title                     | Dr.                                    |
+| suffix                    | Jr.                                    |
+| suffix                    | Sr.                                    |
+| suffix                    | II                                     |
+| suffix                    | III                                    |
+| suffix                    | Esq.                                   |
+| gender                    | Male                                   |
+| gender                    | Female                                 |
+| marital_status            | Married                                |
+| marital_status            | Single                                 |
+| marital_status            | Divorced                               |
+| marital_status            | Widowed                                |
+| marital_status            | Separated                              |
+| marital_status            | Domestic Partner                       |
+| blood_type                | A Negative                             |
+| blood_type                | A Positive                             |
+| blood_type                | AB Negative                            |
+| blood_type                | AB Positive                            |
+| blood_type                | B Negative                             |
+| blood_type                | B Positive                             |
+| blood_type                | O Negative                             |
+| blood_type                | O Positive                             |
+| industry                  | Accommodations                         |
+| industry                  | Accounting                             |
+| industry                  | Advertising                            |
+| industry                  | Aerospace                              |
+| industry                  | Agriculture & Agribusiness             |
+| industry                  | Air Transportation                     |
+| industry                  | Apparel & Accessories                  |
+| industry                  | Auto                                   |
+| industry                  | Banking                                |
+| industry                  | Beauty & Cosmetics                     |
+| industry                  | Biotechnology                          |
+| industry                  | Chemical                               |
+| industry                  | Communications                         |
+| industry                  | Computer                               |
+| industry                  | Construction                           |
+| industry                  | Consulting                             |
+| industry                  | Consumer Products                      |
+| industry                  | Education                              |
+| industry                  | Electronics                            |
+| industry                  | Employment                             |
+| industry                  | Energy                                 |
+| industry                  | Entertainment & Recreation             |
+| industry                  | Fashion                                |
+| industry                  | Financial Services                     |
+| industry                  | Food & Beverage                        |
+| industry                  | Health                                 |
+| industry                  | Healthcare                             |
+| industry                  | Information Technology                 |
+| industry                  | Insurance                              |
+| industry                  | Journalism & News                      |
+| industry                  | Legal Services                         |
+| industry                  | Manufacturing                          |
+| industry                  | Media & Broadcasting                   |
+| industry                  | Medical Devices & Supplies             |
+| industry                  | Motion Pictures & Video                |
+| industry                  | Music                                  |
+| industry                  | Pharmaceutical                         |
+| industry                  | Public Administration                  |
+| industry                  | Public Relations                       |
+| industry                  | Publishing                             |
+| industry                  | Real Estate                            |
+| industry                  | Retail                                 |
+| industry                  | Service                                |
+| industry                  | Sports                                 |
+| industry                  | Technology                             |
+| industry                  | Telecommunications                     |
+| industry                  | Tourism                                |
+| industry                  | Transportation                         |
+| industry                  | Travel                                 |
+| industry                  | Utilities                              |
+| industry                  | Video Game                             |
+| industry                  | Web Services                           |
+| ethnicity                 | Hispanic or Latino                     |
+| ethnicity                 | Not Hispanic or Latino                 |
+| ethnicity                 | Unknown                                |
+| ethnicity                 | Declined To Specify                    |
+| race                      | American Indian/Alaska Native          |
+| race                      | Asian                                  |
+| race                      | Black/African American                 |
+| race                      | Caucasian/White                        |
+| race                      | Multi-Racial                           |
+| race                      | Native Hawaiian/Other Pacific Islander |
+| race                      | Other                                  |
+| race                      | Unknown                                |
+| race                      | Declined To Specify                    |
+| guardian_relationship     | Child                                  |
+| guardian_relationship     | Father                                 |
+| guardian_relationship     | Grandparent                            |
+| guardian_relationship     | Mother                                 |
+| guardian_relationship     | Other                                  |
+| guardian_relationship     | Sibling                                |
+| guardian_relationship     | Spouse                                 |
+| alt_guardian_relationship | Child                                  |
+| alt_guardian_relationship | Father                                 |
+| alt_guardian_relationship | Grandparent                            |
+| alt_guardian_relationship | Mother                                 |
+| alt_guardian_relationship | Other                                  |
+| alt_guardian_relationship | Sibling                                |
+| alt_guardian_relationship | Spouse                                 |
+| caregiver_relationship    | Child                                  |
+| caregiver_relationship    | Father                                 |
+| caregiver_relationship    | Grandparent                            |
+| caregiver_relationship    | Mother                                 |
+| caregiver_relationship    | Other                                  |
+| caregiver_relationship    | Sibling                                |
+| caregiver_relationship    | Spouse                                 |
 
 > Example responses
 
@@ -1273,7 +1262,7 @@ deceased_date: "2019-06-18"
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -1281,7 +1270,7 @@ deceased_date: "2019-06-18"
 }
 ```
 
-<h3 id="post__patients-responses">Responses</h3>
+<h3 id="create-a-patient-responses">Responses</h3>
 
 | Status | Meaning                                                      | Description | Schema                    |
 | ------ | ------------------------------------------------------------ | ----------- | ------------------------- |
@@ -1292,7 +1281,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}
+## Get patient
 
 > Code samples
 
@@ -1429,11 +1418,9 @@ func main() {
 
 `GET /patients/{patient_id}`
 
-_Get patient_
-
 Get a patient record
 
-<h3 id="get__patients_{patient_id}-parameters">Parameters</h3>
+<h3 id="get-patient-parameters">Parameters</h3>
 
 | Name       | In   | Type    | Required | Description |
 | ---------- | ---- | ------- | -------- | ----------- |
@@ -1510,7 +1497,7 @@ Get a patient record
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -1518,7 +1505,7 @@ Get a patient record
 }
 ```
 
-<h3 id="get__patients_{patient_id}-responses">Responses</h3>
+<h3 id="get-patient-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                    |
 | ------ | --------------------------------------------------------------- | ---------------- | ------------------------- |
@@ -1530,7 +1517,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_appointments
+## Get patient appointments
 
 > Code samples
 
@@ -1667,11 +1654,9 @@ func main() {
 
 `GET /patients/{patient_id}/appointments`
 
-_Get patient appointments_
-
 Get patient appointments
 
-<h3 id="get__patients_{patient_id}_appointments-parameters">Parameters</h3>
+<h3 id="get-patient-appointments-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -1703,13 +1688,13 @@ Get patient appointments
     },
     "status": "pending",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -1718,14 +1703,14 @@ Get patient appointments
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_appointments-responses">Responses</h3>
+<h3 id="get-patient-appointments-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_appointments-responseschema">Response Schema</h3>
+<h3 id="get-patient-appointments-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -1773,7 +1758,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\__patients_{patient_id}\_appointments
+## Create a patient appointment
 
 > Code samples
 
@@ -1916,8 +1901,6 @@ func main() {
 
 `POST /patients/{patient_id}/appointments`
 
-_Create a patient appointment_
-
 Create a patient appointment.
 
 > Body parameter
@@ -1930,29 +1913,28 @@ time: string
 specialty_id: 0
 ```
 
-<h3 id="post__patients_{patient_id}_appointments-parameters">Parameters</h3>
+<h3 id="create-a-patient-appointment-parameters">Parameters</h3>
 
-| Name           | In   | Type                                                    | Required | Description                                        |
-| -------------- | ---- | ------------------------------------------------------- | -------- | -------------------------------------------------- |
-| patient_id     | path | string                                                  | true     | Patient ID                                         |
-| body           | body | [postPatientAppointment](#schemapostpatientappointment) | false    | none                                               |
-| » provider_id  | body | integer                                                 | false    | Provider ID                                        |
-| » status       | body | string                                                  | true     | Current appointment status                         |
-| » date         | body | string(date)                                            | false    | Date of appointment                                |
-| » time         | body | string                                                  | false    | Time of appointment                                |
-| » specialty_id | body | integer                                                 | true     | Specialty ID obtained from GET /specialty endpoint |
+| Name         | In   | Type         | Required | Description                                        |
+| ------------ | ---- | ------------ | -------- | -------------------------------------------------- |
+| patient_id   | path | string       | true     | Patient ID                                         |
+| provider_id  | body | integer      | false    | Provider ID                                        |
+| status       | body | string       | true     | Current appointment status                         |
+| date         | body | string(date) | false    | Date of appointment                                |
+| time         | body | string       | false    | Time of appointment                                |
+| specialty_id | body | integer      | true     | Specialty ID obtained from GET /specialty endpoint |
 
 #### Enumerated Values
 
 | Parameter | Value       |
 | --------- | ----------- |
-| » status  | pending     |
-| » status  | scheduled   |
-| » status  | cancelled   |
-| » status  | rescheduled |
-| » status  | complete    |
+| status    | pending     |
+| status    | scheduled   |
+| status    | cancelled   |
+| status    | rescheduled |
+| status    | complete    |
 
-<h3 id="post__patients_{patient_id}_appointments-responses">Responses</h3>
+<h3 id="create-a-patient-appointment-responses">Responses</h3>
 
 | Status | Meaning                                                      | Description | Schema |
 | ------ | ------------------------------------------------------------ | ----------- | ------ |
@@ -1963,7 +1945,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient*id}\_appointments*{appointment_id}
+## Get a patient appointment
 
 > Code samples
 
@@ -2100,11 +2082,9 @@ func main() {
 
 `GET /patients/{patient_id}/appointments/{appointment_id}`
 
-_Get a patient appointment_
-
 Get a patient appointment
 
-<h3 id="get__patients_{patient_id}_appointments_{appointment_id}-parameters">Parameters</h3>
+<h3 id="get-a-patient-appointment-parameters">Parameters</h3>
 
 | Name           | In   | Type    | Required | Description    |
 | -------------- | ---- | ------- | -------- | -------------- |
@@ -2136,13 +2116,13 @@ Get a patient appointment
   },
   "status": "pending",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -2150,7 +2130,7 @@ Get a patient appointment
 }
 ```
 
-<h3 id="get__patients_{patient_id}_appointments_{appointment_id}-responses">Responses</h3>
+<h3 id="get-a-patient-appointment-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                            |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------------------- |
@@ -2162,7 +2142,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## put\__patients_{patient*id}\_appointments*{appointment_id}
+## Update a patient appointment
 
 > Code samples
 
@@ -2305,8 +2285,6 @@ func main() {
 
 `PUT /patients/{patient_id}/appointments/{appointment_id}`
 
-_Update a patient appointment_
-
 Update a patient appointment.
 
 > Body parameter
@@ -2319,30 +2297,29 @@ time: string
 specialty_id: 0
 ```
 
-<h3 id="put__patients_{patient_id}_appointments_{appointment_id}-parameters">Parameters</h3>
+<h3 id="update-a-patient-appointment-parameters">Parameters</h3>
 
-| Name           | In   | Type                                                    | Required | Description                                        |
-| -------------- | ---- | ------------------------------------------------------- | -------- | -------------------------------------------------- |
-| patient_id     | path | string                                                  | true     | Patient ID                                         |
-| appointment_id | path | string                                                  | true     | Appointment ID                                     |
-| body           | body | [postPatientAppointment](#schemapostpatientappointment) | false    | none                                               |
-| » provider_id  | body | integer                                                 | false    | Provider ID                                        |
-| » status       | body | string                                                  | true     | Current appointment status                         |
-| » date         | body | string(date)                                            | false    | Date of appointment                                |
-| » time         | body | string                                                  | false    | Time of appointment                                |
-| » specialty_id | body | integer                                                 | true     | Specialty ID obtained from GET /specialty endpoint |
+| Name           | In   | Type         | Required | Description                                        |
+| -------------- | ---- | ------------ | -------- | -------------------------------------------------- |
+| patient_id     | path | string       | true     | Patient ID                                         |
+| appointment_id | path | string       | true     | Appointment ID                                     |
+| provider_id    | body | integer      | false    | Provider ID                                        |
+| status         | body | string       | true     | Current appointment status                         |
+| date           | body | string(date) | false    | Date of appointment                                |
+| time           | body | string       | false    | Time of appointment                                |
+| specialty_id   | body | integer      | true     | Specialty ID obtained from GET /specialty endpoint |
 
 #### Enumerated Values
 
 | Parameter | Value       |
 | --------- | ----------- |
-| » status  | pending     |
-| » status  | scheduled   |
-| » status  | cancelled   |
-| » status  | rescheduled |
-| » status  | complete    |
+| status    | pending     |
+| status    | scheduled   |
+| status    | cancelled   |
+| status    | rescheduled |
+| status    | complete    |
 
-<h3 id="put__patients_{patient_id}_appointments_{appointment_id}-responses">Responses</h3>
+<h3 id="update-a-patient-appointment-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema |
 | ------ | ------------------------------------------------------- | ----------- | ------ |
@@ -2353,7 +2330,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_diagnoses
+## Get patient diagnoses
 
 > Code samples
 
@@ -2490,11 +2467,9 @@ func main() {
 
 `GET /patients/{patient_id}/diagnoses`
 
-_Get patient diagnoses_
-
 Get patient diagnoses
 
-<h3 id="get__patients_{patient_id}_diagnoses-parameters">Parameters</h3>
+<h3 id="get-patient-diagnoses-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -2516,14 +2491,14 @@ Get patient diagnoses
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_diagnoses-responses">Responses</h3>
+<h3 id="get-patient-diagnoses-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_diagnoses-responseschema">Response Schema</h3>
+<h3 id="get-patient-diagnoses-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -2541,7 +2516,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient*id}\_diagnoses*{diagnosis_id}
+## Get a patient diagnosis
 
 > Code samples
 
@@ -2678,11 +2653,9 @@ func main() {
 
 `GET /patients/{patient_id}/diagnoses/{diagnosis_id}`
 
-_Get a patient diagnosis_
-
 Get a patient diagnosis
 
-<h3 id="get__patients_{patient_id}_diagnoses_{diagnosis_id}-parameters">Parameters</h3>
+<h3 id="get-a-patient-diagnosis-parameters">Parameters</h3>
 
 | Name         | In   | Type   | Required | Description  |
 | ------------ | ---- | ------ | -------- | ------------ |
@@ -2703,7 +2676,7 @@ Get a patient diagnosis
 }
 ```
 
-<h3 id="get__patients_{patient_id}_diagnoses_{diagnosis_id}-responses">Responses</h3>
+<h3 id="get-a-patient-diagnosis-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                        |
 | ------ | --------------------------------------------------------------- | ---------------- | ----------------------------- |
@@ -2715,7 +2688,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## put\__patients_{patient*id}\_diagnoses*{diagnosis_id}
+## Update a patient diagnosis
 
 > Code samples
 
@@ -2854,8 +2827,6 @@ func main() {
 
 `PUT /patients/{patient_id}/diagnoses/{diagnosis_id}`
 
-_Update a patient diagnosis_
-
 Update a patient Diagnosis. This is only used to update the chronic for the moment
 
 > Body parameter
@@ -2864,16 +2835,15 @@ Update a patient Diagnosis. This is only used to update the chronic for the mome
 chronic: true
 ```
 
-<h3 id="put__patients_{patient_id}_diagnoses_{diagnosis_id}-parameters">Parameters</h3>
+<h3 id="update-a-patient-diagnosis-parameters">Parameters</h3>
 
 | Name         | In   | Type    | Required | Description              |
 | ------------ | ---- | ------- | -------- | ------------------------ |
 | patient_id   | path | string  | true     | Patient ID               |
 | diagnosis_id | path | string  | true     | InXite Diagnosis ID      |
-| body         | body | object  | false    | none                     |
-| » chronic    | body | boolean | true     | Chronic as true or false |
+| chronic      | body | boolean | true     | Chronic as true or false |
 
-<h3 id="put__patients_{patient_id}_diagnoses_{diagnosis_id}-responses">Responses</h3>
+<h3 id="update-a-patient-diagnosis-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
@@ -2885,7 +2855,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_healthscore
+## Get current patient health score
 
 > Code samples
 
@@ -3022,11 +2992,9 @@ func main() {
 
 `GET /patients/{patient_id}/healthscore`
 
-_Get current patient health score_
-
 Get current patient health score
 
-<h3 id="get__patients_{patient_id}_healthscore-parameters">Parameters</h3>
+<h3 id="get-current-patient-health-score-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -3060,13 +3028,13 @@ Get current patient health score
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -3074,7 +3042,7 @@ Get current patient health score
     }
   ],
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -3082,7 +3050,7 @@ Get current patient health score
 }
 ```
 
-<h3 id="get__patients_{patient_id}_healthscore-responses">Responses</h3>
+<h3 id="get-current-patient-health-score-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                            |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------------------- |
@@ -3094,7 +3062,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient*id}\_healthscore*{healthscore_id}
+## Get a patient health score
 
 > Code samples
 
@@ -3231,11 +3199,9 @@ func main() {
 
 `GET /patients/{patient_id}/healthscore/{healthscore_id}`
 
-_Get a patient health score_
-
 Get a patient health score
 
-<h3 id="get__patients_{patient_id}_healthscore_{healthscore_id}-parameters">Parameters</h3>
+<h3 id="get-a-patient-health-score-parameters">Parameters</h3>
 
 | Name           | In   | Type   | Required | Description     |
 | -------------- | ---- | ------ | -------- | --------------- |
@@ -3270,13 +3236,13 @@ Get a patient health score
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -3284,7 +3250,7 @@ Get a patient health score
     }
   ],
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -3292,7 +3258,7 @@ Get a patient health score
 }
 ```
 
-<h3 id="get__patients_{patient_id}_healthscore_{healthscore_id}-responses">Responses</h3>
+<h3 id="get-a-patient-health-score-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                            |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------------------- |
@@ -3304,7 +3270,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_medications
+## Get patient medications
 
 > Code samples
 
@@ -3441,11 +3407,9 @@ func main() {
 
 `GET /patients/{patient_id}/medications`
 
-_Get patient medications_
-
 Get patient medications
 
-<h3 id="get__patients_{patient_id}_medications-parameters">Parameters</h3>
+<h3 id="get-patient-medications-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -3466,14 +3430,14 @@ Get patient medications
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_medications-responses">Responses</h3>
+<h3 id="get-patient-medications-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_medications-responseschema">Response Schema</h3>
+<h3 id="get-patient-medications-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -3490,7 +3454,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\__patients_{patient_id}\_medications
+## Create patient medication
 
 > Code samples
 
@@ -3649,8 +3613,6 @@ func main() {
 
 `POST /patients/{patient_id}/medications`
 
-_Create patient medication_
-
 Create patient medication
 
 > Body parameter
@@ -3672,26 +3634,25 @@ per_refill_count: 0
 instructions: string
 ```
 
-<h3 id="post__patients_{patient_id}_medications-parameters">Parameters</h3>
+<h3 id="create-patient-medication-parameters">Parameters</h3>
 
-| Name               | In   | Type         | Required | Description                            |
-| ------------------ | ---- | ------------ | -------- | -------------------------------------- |
-| patient_id         | path | string       | true     | Patient ID                             |
-| body               | body | object       | false    | none                                   |
-| » medication_name  | body | string       | true     | Full medication name                   |
-| » rxnorm_cui       | body | integer      | false    | RxNorm concept ID                      |
-| » start_date       | body | string(date) | true     | Medication start date                  |
-| » end_date         | body | string(date) | false    | Medication end date                    |
-| » quantity         | body | integer      | false    | Initial quantity (count)               |
-| » dose             | body | integer      | false    | Strength                               |
-| » units            | body | string       | false    | Unit of measure                        |
-| » take             | body | integer      | false    | How many to take                       |
-| » form_id          | body | integer      | false    | Form factor                            |
-| » route_id         | body | integer      | false    | Route of administration                |
-| » interval_id      | body | integer      | false    | Frequency                              |
-| » refill_count     | body | integer      | false    | Number of refills                      |
-| » per_refill_count | body | integer      | false    | Number of units per refill             |
-| » instructions     | body | string       | false    | Instructions for taking the medication |
+| Name             | In   | Type         | Required | Description                            |
+| ---------------- | ---- | ------------ | -------- | -------------------------------------- |
+| patient_id       | path | string       | true     | Patient ID                             |
+| medication_name  | body | string       | true     | Full medication name                   |
+| rxnorm_cui       | body | integer      | false    | RxNorm concept ID                      |
+| start_date       | body | string(date) | true     | Medication start date                  |
+| end_date         | body | string(date) | false    | Medication end date                    |
+| quantity         | body | integer      | false    | Initial quantity (count)               |
+| dose             | body | integer      | false    | Strength                               |
+| units            | body | string       | false    | Unit of measure                        |
+| take             | body | integer      | false    | How many to take                       |
+| form_id          | body | integer      | false    | Form factor                            |
+| route_id         | body | integer      | false    | Route of administration                |
+| interval_id      | body | integer      | false    | Frequency                              |
+| refill_count     | body | integer      | false    | Number of refills                      |
+| per_refill_count | body | integer      | false    | Number of units per refill             |
+| instructions     | body | string       | false    | Instructions for taking the medication |
 
 > Example responses
 
@@ -3706,7 +3667,7 @@ instructions: string
 }
 ```
 
-<h3 id="post__patients_{patient_id}_medications-responses">Responses</h3>
+<h3 id="create-patient-medication-responses">Responses</h3>
 
 | Status | Meaning                                                      | Description | Schema                                        |
 | ------ | ------------------------------------------------------------ | ----------- | --------------------------------------------- |
@@ -3717,7 +3678,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_medications_details
+## Get patient's medication details
 
 > Code samples
 
@@ -3854,11 +3815,9 @@ func main() {
 
 `GET /patients/{patient_id}/medications/details`
 
-_Get patient's medication details_
-
 Get patient's medication details / prices
 
-<h3 id="get__patients_{patient_id}_medications_details-parameters">Parameters</h3>
+<h3 id="get-patient's-medication-details-parameters">Parameters</h3>
 
 | Name             | In    | Type   | Required | Description                                                            |
 | ---------------- | ----- | ------ | -------- | ---------------------------------------------------------------------- |
@@ -3978,14 +3937,14 @@ Get patient's medication details / prices
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_medications_details-responses">Responses</h3>
+<h3 id="get-patient's-medication-details-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_medications_details-responseschema">Response Schema</h3>
+<h3 id="get-patient's-medication-details-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -4077,7 +4036,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient*id}\_medications*{medication_id}
+## Get a patient medication
 
 > Code samples
 
@@ -4214,11 +4173,9 @@ func main() {
 
 `GET /patients/{patient_id}/medications/{medication_id}`
 
-_Get a patient medication_
-
 Get a patient medication
 
-<h3 id="get__patients_{patient_id}_medications_{medication_id}-parameters">Parameters</h3>
+<h3 id="get-a-patient-medication-parameters">Parameters</h3>
 
 | Name          | In   | Type   | Required | Description   |
 | ------------- | ---- | ------ | -------- | ------------- |
@@ -4238,7 +4195,7 @@ Get a patient medication
 }
 ```
 
-<h3 id="get__patients_{patient_id}_medications_{medication_id}-responses">Responses</h3>
+<h3 id="get-a-patient-medication-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                                        |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------------------------------- |
@@ -4250,7 +4207,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## put\__patients_{patient*id}\_medications*{medication_id}
+## Update a patient medication
 
 > Code samples
 
@@ -4400,8 +4357,6 @@ func main() {
 
 `PUT /patients/{patient_id}/medications/{medication_id}`
 
-_Update a patient medication_
-
 Update a patient medication
 
 > Body parameter
@@ -4421,27 +4376,26 @@ per_refill_count: 0
 instructions: string
 ```
 
-<h3 id="put__patients_{patient_id}_medications_{medication_id}-parameters">Parameters</h3>
+<h3 id="update-a-patient-medication-parameters">Parameters</h3>
 
-| Name               | In   | Type         | Required | Description                            |
-| ------------------ | ---- | ------------ | -------- | -------------------------------------- |
-| patient_id         | path | string       | true     | Patient ID                             |
-| medication_id      | path | string       | true     | Medication ID                          |
-| body               | body | object       | false    | none                                   |
-| » start_date       | body | string(date) | true     | Medication start date                  |
-| » end_date         | body | string(date) | false    | Medication end date                    |
-| » quantity         | body | integer      | false    | Initial quantity (count)               |
-| » dose             | body | integer      | false    | Strength                               |
-| » units            | body | string       | false    | Unit of measure                        |
-| » take             | body | integer      | false    | How many to take                       |
-| » form_id          | body | integer      | false    | Form factor                            |
-| » route_id         | body | integer      | false    | Route of administration                |
-| » interval_id      | body | integer      | false    | Frequency                              |
-| » refill_count     | body | integer      | false    | Number of refills                      |
-| » per_refill_count | body | integer      | false    | Number of units per refill             |
-| » instructions     | body | string       | false    | Instructions for taking the medication |
+| Name             | In   | Type         | Required | Description                            |
+| ---------------- | ---- | ------------ | -------- | -------------------------------------- |
+| patient_id       | path | string       | true     | Patient ID                             |
+| medication_id    | path | string       | true     | Medication ID                          |
+| start_date       | body | string(date) | true     | Medication start date                  |
+| end_date         | body | string(date) | false    | Medication end date                    |
+| quantity         | body | integer      | false    | Initial quantity (count)               |
+| dose             | body | integer      | false    | Strength                               |
+| units            | body | string       | false    | Unit of measure                        |
+| take             | body | integer      | false    | How many to take                       |
+| form_id          | body | integer      | false    | Form factor                            |
+| route_id         | body | integer      | false    | Route of administration                |
+| interval_id      | body | integer      | false    | Frequency                              |
+| refill_count     | body | integer      | false    | Number of refills                      |
+| per_refill_count | body | integer      | false    | Number of units per refill             |
+| instructions     | body | string       | false    | Instructions for taking the medication |
 
-<h3 id="put__patients_{patient_id}_medications_{medication_id}-responses">Responses</h3>
+<h3 id="update-a-patient-medication-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema |
 | ------ | ------------------------------------------------------- | ----------- | ------ |
@@ -4452,7 +4406,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_products
+## Get patient products
 
 > Code samples
 
@@ -4589,11 +4543,9 @@ func main() {
 
 `GET /patients/{patient_id}/products`
 
-_Get patient products_
-
 Get patient products
 
-<h3 id="get__patients_{patient_id}_products-parameters">Parameters</h3>
+<h3 id="get-patient-products-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -4638,14 +4590,14 @@ Get patient products
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_products-responses">Responses</h3>
+<h3 id="get-patient-products-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_products-responseschema">Response Schema</h3>
+<h3 id="get-patient-products-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -4680,7 +4632,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_products_categories
+## Get patient product categories
 
 > Code samples
 
@@ -4817,11 +4769,9 @@ func main() {
 
 `GET /patients/{patient_id}/products/categories`
 
-_Get patient product categories_
-
 Get patient product categories
 
-<h3 id="get__patients_{patient_id}_products_categories-parameters">Parameters</h3>
+<h3 id="get-patient-product-categories-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -4843,14 +4793,14 @@ Get patient product categories
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_products_categories-responses">Responses</h3>
+<h3 id="get-patient-product-categories-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_products_categories-responseschema">Response Schema</h3>
+<h3 id="get-patient-product-categories-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -4868,7 +4818,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\__patients_{patient_id}\_shares
+## Create a patient share
 
 > Code samples
 
@@ -5016,8 +4966,6 @@ func main() {
 
 `POST /patients/{patient_id}/shares`
 
-_Create a patient share_
-
 Create a patient share
 
 > Body parameter
@@ -5028,15 +4976,14 @@ anonymous: true
 options: string
 ```
 
-<h3 id="post__patients_{patient_id}_shares-parameters">Parameters</h3>
+<h3 id="create-a-patient-share-parameters">Parameters</h3>
 
-| Name        | In   | Type    | Required | Description                                                                                                                   |
-| ----------- | ---- | ------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| patient_id  | path | string  | true     | Patient ID                                                                                                                    |
-| body        | body | object  | false    | none                                                                                                                          |
-| » name      | body | string  | true     | Name of the document                                                                                                          |
-| » anonymous | body | boolean | true     | Anonymous access                                                                                                              |
-| » options   | body | string  | true     | Options JSON { "data" : [ "activity-plan", "appointments", "diagnoses", "goals", "health-metrics", "medications","problems"]} |
+| Name       | In   | Type    | Required | Description                                                                                                                   |
+| ---------- | ---- | ------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| patient_id | path | string  | true     | Patient ID                                                                                                                    |
+| name       | body | string  | true     | Name of the document                                                                                                          |
+| anonymous  | body | boolean | true     | Anonymous access                                                                                                              |
+| options    | body | string  | true     | Options JSON { "data" : [ "activity-plan", "appointments", "diagnoses", "goals", "health-metrics", "medications","problems"]} |
 
 > Example responses
 
@@ -5049,14 +4996,14 @@ options: string
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -5066,7 +5013,7 @@ options: string
 }
 ```
 
-<h3 id="post__patients_{patient_id}_shares-responses">Responses</h3>
+<h3 id="create-a-patient-share-responses">Responses</h3>
 
 | Status | Meaning                                                      | Description | Schema                |
 | ------ | ------------------------------------------------------------ | ----------- | --------------------- |
@@ -5077,7 +5024,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient_id}\_shares
+## Get all patient shares
 
 > Code samples
 
@@ -5214,11 +5161,9 @@ func main() {
 
 `GET /patients/{patient_id}/shares`
 
-_Get all patient shares_
-
 Get all patient shares
 
-<h3 id="get__patients_{patient_id}_shares-parameters">Parameters</h3>
+<h3 id="get-all-patient-shares-parameters">Parameters</h3>
 
 | Name       | In   | Type   | Required | Description |
 | ---------- | ---- | ------ | -------- | ----------- |
@@ -5236,14 +5181,14 @@ Get all patient shares
     "name": "string",
     "hash": "string",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "anonymous": true,
     "active": true,
-    "expiration_date": "2019-06-18T13:50:07Z",
+    "expiration_date": "2019-06-18T14:54:51Z",
     "share_url": "string",
     "image_url": "string",
     "image": "string",
@@ -5254,14 +5199,14 @@ Get all patient shares
 ]
 ```
 
-<h3 id="get__patients_{patient_id}_shares-responses">Responses</h3>
+<h3 id="get-all-patient-shares-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__patients_{patient_id}_shares-responseschema">Response Schema</h3>
+<h3 id="get-all-patient-shares-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -5291,7 +5236,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__patients_{patient*id}\_shares*{share_id}
+## Get a patient share
 
 > Code samples
 
@@ -5428,11 +5373,9 @@ func main() {
 
 `GET /patients/{patient_id}/shares/{share_id}`
 
-_Get a patient share_
-
 Get a patient share
 
-<h3 id="get__patients_{patient_id}_shares_{share_id}-parameters">Parameters</h3>
+<h3 id="get-a-patient-share-parameters">Parameters</h3>
 
 | Name       | In   | Type    | Required | Description |
 | ---------- | ---- | ------- | -------- | ----------- |
@@ -5450,14 +5393,14 @@ Get a patient share
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -5467,7 +5410,7 @@ Get a patient share
 }
 ```
 
-<h3 id="get__patients_{patient_id}_shares_{share_id}-responses">Responses</h3>
+<h3 id="get-a-patient-share-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------- |
@@ -5479,7 +5422,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\__patients_{patient*id}\_shares*{share_id}\_send
+## Send a patient share
 
 > Code samples
 
@@ -5621,8 +5564,6 @@ func main() {
 
 `POST /patients/{patient_id}/shares/{share_id}/send`
 
-_Send a patient share_
-
 Send a patient share
 
 > Body parameter
@@ -5634,26 +5575,25 @@ last_name: string
 type: mms
 ```
 
-<h3 id="post__patients_{patient_id}_shares_{share_id}_send-parameters">Parameters</h3>
+<h3 id="send-a-patient-share-parameters">Parameters</h3>
 
-| Name         | In   | Type    | Required | Description                          |
-| ------------ | ---- | ------- | -------- | ------------------------------------ |
-| patient_id   | path | string  | true     | Patient ID                           |
-| share_id     | path | integer | true     | Share ID                             |
-| body         | body | object  | false    | none                                 |
-| » to         | body | string  | true     | Either phone number or email address |
-| » first_name | body | string  | true     | First name                           |
-| » last_name  | body | string  | true     | Last name                            |
-| » type       | body | string  | true     | Either mms or email                  |
+| Name       | In   | Type    | Required | Description                          |
+| ---------- | ---- | ------- | -------- | ------------------------------------ |
+| patient_id | path | string  | true     | Patient ID                           |
+| share_id   | path | integer | true     | Share ID                             |
+| to         | body | string  | true     | Either phone number or email address |
+| first_name | body | string  | true     | First name                           |
+| last_name  | body | string  | true     | Last name                            |
+| type       | body | string  | true     | Either mms or email                  |
 
 #### Enumerated Values
 
 | Parameter | Value |
 | --------- | ----- |
-| » type    | mms   |
-| » type    | email |
+| type      | mms   |
+| type      | email |
 
-<h3 id="post__patients_{patient_id}_shares_{share_id}_send-responses">Responses</h3>
+<h3 id="send-a-patient-share-responses">Responses</h3>
 
 | Status | Meaning                                                                    | Description           | Schema |
 | ------ | -------------------------------------------------------------------------- | --------------------- | ------ |
@@ -5667,7 +5607,7 @@ Bearer
 
 <h1 id="inxite-api-assessments">Assessments</h1>
 
-## post\_\_soar
+## Create SOAR assessment
 
 > Code samples
 
@@ -5710,7 +5650,7 @@ $.ajax({
 const fetch = require('node-fetch');
 const inputBody = '{
   "patient_id": 0,
-  "date_time": "2019-06-18T13:50:07Z"
+  "date_time": "2019-06-18T14:54:51Z"
 }';
 const headers = {
   'Content-Type':'application/x-www-form-urlencoded',
@@ -5814,24 +5754,21 @@ func main() {
 
 `POST /soar`
 
-_Create SOAR assessment_
-
 Create SOAR assessment
 
 > Body parameter
 
 ```yaml
 patient_id: 0
-date_time: "2019-06-18T13:50:07Z"
+date_time: "2019-06-18T14:54:51Z"
 ```
 
-<h3 id="post__soar-parameters">Parameters</h3>
+<h3 id="create-soar-assessment-parameters">Parameters</h3>
 
-| Name         | In   | Type              | Required | Description                         |
-| ------------ | ---- | ----------------- | -------- | ----------------------------------- |
-| body         | body | object            | false    | none                                |
-| » patient_id | body | integer           | true     | Patient ID                          |
-| » date_time  | body | string(date-time) | false    | Assessment completion date and time |
+| Name       | In   | Type              | Required | Description                         |
+| ---------- | ---- | ----------------- | -------- | ----------------------------------- |
+| patient_id | body | integer           | true     | Patient ID                          |
+| date_time  | body | string(date-time) | false    | Assessment completion date and time |
 
 > Example responses
 
@@ -5842,8 +5779,8 @@ date_time: "2019-06-18T13:50:07Z"
   "statusCode": 0,
   "body": {
     "PatientID": 0,
-    "RequestTime": "2019-06-18T13:50:07Z",
-    "ResponseTime": "2019-06-18T13:50:07Z",
+    "RequestTime": "2019-06-18T14:54:51Z",
+    "ResponseTime": "2019-06-18T14:54:51Z",
     "Filename": "string",
     "Errors": true,
     "report": "string",
@@ -5875,13 +5812,13 @@ date_time: "2019-06-18T13:50:07Z"
 }
 ```
 
-<h3 id="post__soar-responses">Responses</h3>
+<h3 id="create-soar-assessment-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema |
 | ------ | ------------------------------------------------------- | ----------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          | Inline |
 
-<h3 id="post__soar-responseschema">Response Schema</h3>
+<h3 id="create-soar-assessment-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -5920,7 +5857,7 @@ Bearer
 
 <h1 id="inxite-api-communications">Communications</h1>
 
-## post\_\_emails
+## Send Email(s)
 
 > Code samples
 
@@ -6063,8 +6000,6 @@ func main() {
 
 `POST /emails`
 
-_Send Email(s)_
-
 Send Email(s) used for Shares but not using anymore, replace by /shares/{shareId}/send
 
 > Body parameter
@@ -6076,16 +6011,15 @@ entity: string
 entity_id: string
 ```
 
-<h3 id="post__emails-parameters">Parameters</h3>
+<h3 id="send-email(s)-parameters">Parameters</h3>
 
-| Name        | In   | Type     | Required | Description                                         |
-| ----------- | ---- | -------- | -------- | --------------------------------------------------- |
-| body        | body | object   | false    | none                                                |
-| » to        | body | [string] | true     | Array of to email addresses                         |
-| » entity    | body | string   | true     | Identifier for what data needs to send like `Share` |
-| » entity_id | body | string   | true     | Entity Id, identifier for the entity                |
+| Name      | In   | Type     | Required | Description                                         |
+| --------- | ---- | -------- | -------- | --------------------------------------------------- |
+| to        | body | [string] | true     | Array of to email addresses                         |
+| entity    | body | string   | true     | Identifier for what data needs to send like `Share` |
+| entity_id | body | string   | true     | Entity Id, identifier for the entity                |
 
-<h3 id="post__emails-responses">Responses</h3>
+<h3 id="send-email(s)-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description   | Schema |
 | ------ | ---------------------------------------------------------------- | ------------- | ------ |
@@ -6098,7 +6032,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\_\_messages
+## Send Message(s)
 
 > Code samples
 
@@ -6241,8 +6175,6 @@ func main() {
 
 `POST /messages`
 
-_Send Message(s)_
-
 Send Message(s) used for Shares but not using anymore, replace by /shares/{shareId}/send
 
 > Body parameter
@@ -6254,16 +6186,15 @@ entity: string
 entity_id: string
 ```
 
-<h3 id="post__messages-parameters">Parameters</h3>
+<h3 id="send-message(s)-parameters">Parameters</h3>
 
-| Name        | In   | Type     | Required | Description                                         |
-| ----------- | ---- | -------- | -------- | --------------------------------------------------- |
-| body        | body | object   | false    | none                                                |
-| » to        | body | [string] | true     | Array of to phone numbers                           |
-| » entity    | body | string   | true     | Identifier for what data needs to send like `Share` |
-| » entity_id | body | string   | true     | Entity Id, identifier for the entity                |
+| Name      | In   | Type     | Required | Description                                         |
+| --------- | ---- | -------- | -------- | --------------------------------------------------- |
+| to        | body | [string] | true     | Array of to phone numbers                           |
+| entity    | body | string   | true     | Identifier for what data needs to send like `Share` |
+| entity_id | body | string   | true     | Entity Id, identifier for the entity                |
 
-<h3 id="post__messages-responses">Responses</h3>
+<h3 id="send-message(s)-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description   | Schema |
 | ------ | ---------------------------------------------------------------- | ------------- | ------ |
@@ -6276,7 +6207,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## post\_\_notifications
+## Send Notification(s)
 
 > Code samples
 
@@ -6425,8 +6356,6 @@ func main() {
 
 `POST /notifications`
 
-_Send Notification(s)_
-
 Send Notification(s)
 
 > Body parameter
@@ -6438,15 +6367,14 @@ patient_id: 0
 user_id: 0
 ```
 
-<h3 id="post__notifications-parameters">Parameters</h3>
+<h3 id="send-notification(s)-parameters">Parameters</h3>
 
-| Name         | In   | Type    | Required | Description                                          |
-| ------------ | ---- | ------- | -------- | ---------------------------------------------------- |
-| body         | body | object  | false    | none                                                 |
-| » type       | body | string  | true     | The type of notification (allergy, medication, etc.) |
-| » action     | body | string  | true     | The action completed (added, updated, etc.)          |
-| » patient_id | body | integer | false    | The patient ID                                       |
-| » user_id    | body | integer | false    | The user ID for the notification recipient           |
+| Name       | In   | Type    | Required | Description                                          |
+| ---------- | ---- | ------- | -------- | ---------------------------------------------------- |
+| type       | body | string  | true     | The type of notification (allergy, medication, etc.) |
+| action     | body | string  | true     | The action completed (added, updated, etc.)          |
+| patient_id | body | integer | false    | The patient ID                                       |
+| user_id    | body | integer | false    | The user ID for the notification recipient           |
 
 > Example responses
 
@@ -6461,7 +6389,7 @@ user_id: 0
 }
 ```
 
-<h3 id="post__notifications-responses">Responses</h3>
+<h3 id="send-notification(s)-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description   | Schema                              |
 | ------ | ---------------------------------------------------------------- | ------------- | ----------------------------------- |
@@ -6476,7 +6404,7 @@ Bearer
 
 <h1 id="inxite-api-organizations">Organizations</h1>
 
-## get\_\_organizations
+## Get all organizations
 
 > Code samples
 
@@ -6613,11 +6541,9 @@ func main() {
 
 `GET /organizations`
 
-_Get all organizations_
-
 Get all organizations or search by name or code
 
-<h3 id="get__organizations-parameters">Parameters</h3>
+<h3 id="get-all-organizations-parameters">Parameters</h3>
 
 | Name | In    | Type   | Required | Description       |
 | ---- | ----- | ------ | -------- | ----------------- |
@@ -6647,7 +6573,7 @@ Get all organizations or search by name or code
 ]
 ```
 
-<h3 id="get__organizations-responses">Responses</h3>
+<h3 id="get-all-organizations-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description      | Schema |
 | ------ | ---------------------------------------------------------------- | ---------------- | ------ |
@@ -6655,7 +6581,7 @@ Get all organizations or search by name or code
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)  | No results found | None   |
 | 400    | [Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1) | Errors           | None   |
 
-<h3 id="get__organizations-responseschema">Response Schema</h3>
+<h3 id="get-all-organizations-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -6680,7 +6606,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__organizations_{organization_id}
+## Get a organization
 
 > Code samples
 
@@ -6817,11 +6743,9 @@ func main() {
 
 `GET /organizations/{organization_id}`
 
-_Get a organization_
-
 Get a organization
 
-<h3 id="get__organizations_{organization_id}-parameters">Parameters</h3>
+<h3 id="get-a-organization-parameters">Parameters</h3>
 
 | Name            | In   | Type    | Required | Description     |
 | --------------- | ---- | ------- | -------- | --------------- |
@@ -6848,7 +6772,7 @@ Get a organization
 }
 ```
 
-<h3 id="get__organizations_{organization_id}-responses">Responses</h3>
+<h3 id="get-a-organization-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description      | Schema                              |
 | ------ | ---------------------------------------------------------------- | ---------------- | ----------------------------------- |
@@ -6861,7 +6785,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__organizations_{organization_id}\_healthscores
+## Get all Health Scores for an organization
 
 > Code samples
 
@@ -6998,11 +6922,9 @@ func main() {
 
 `GET /organizations/{organization_id}/healthscores`
 
-_Get all Health Scores for an organization_
-
 Get all Health Scores for an organization
 
-<h3 id="get__organizations_{organization_id}_healthscores-parameters">Parameters</h3>
+<h3 id="get-all-health-scores-for-an-organization-parameters">Parameters</h3>
 
 | Name            | In   | Type   | Required | Description     |
 | --------------- | ---- | ------ | -------- | --------------- |
@@ -7037,13 +6959,13 @@ Get all Health Scores for an organization
           "text": "string"
         },
         "created": {
-          "date": "2019-06-18T13:50:07Z",
+          "date": "2019-06-18T14:54:51Z",
           "first_name": "string",
           "last_name": "string",
           "user_id": 0
         },
         "updated": {
-          "date": "2019-06-18T13:50:07Z",
+          "date": "2019-06-18T14:54:51Z",
           "first_name": "string",
           "last_name": "string",
           "user_id": 0
@@ -7051,7 +6973,7 @@ Get all Health Scores for an organization
       }
     ],
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -7060,13 +6982,13 @@ Get all Health Scores for an organization
 ]
 ```
 
-<h3 id="get__organizations_{organization_id}_healthscores-responses">Responses</h3>
+<h3 id="get-all-health-scores-for-an-organization-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema |
 | ------ | ------------------------------------------------------- | ----------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          | Inline |
 
-<h3 id="get__organizations_{organization_id}_healthscores-responseschema">Response Schema</h3>
+<h3 id="get-all-health-scores-for-an-organization-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -7110,7 +7032,7 @@ Bearer
 
 <h1 id="inxite-api-reference">Reference</h1>
 
-## get\_\_reference_medication_forms
+## Get available medication forms
 
 > Code samples
 
@@ -7247,8 +7169,6 @@ func main() {
 
 `GET /reference/medication_forms`
 
-_Get available medication forms_
-
 Get available medication forms
 
 > Example responses
@@ -7264,14 +7184,14 @@ Get available medication forms
 ]
 ```
 
-<h3 id="get__reference_medication_forms-responses">Responses</h3>
+<h3 id="get-available-medication-forms-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__reference_medication_forms-responseschema">Response Schema</h3>
+<h3 id="get-available-medication-forms-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -7291,7 +7211,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\_\_reference_medication_frequencies
+## Get available medication frequencies
 
 > Code samples
 
@@ -7428,8 +7348,6 @@ func main() {
 
 `GET /reference/medication_frequencies`
 
-_Get available medication frequencies_
-
 Get available medication frequencies
 
 > Example responses
@@ -7445,14 +7363,14 @@ Get available medication frequencies
 ]
 ```
 
-<h3 id="get__reference_medication_frequencies-responses">Responses</h3>
+<h3 id="get-available-medication-frequencies-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__reference_medication_frequencies-responseschema">Response Schema</h3>
+<h3 id="get-available-medication-frequencies-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -7472,7 +7390,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\_\_reference_medication_routes
+## Get available medication routes
 
 > Code samples
 
@@ -7609,8 +7527,6 @@ func main() {
 
 `GET /reference/medication_routes`
 
-_Get available medication routes_
-
 Get available medication routes
 
 > Example responses
@@ -7626,14 +7542,14 @@ Get available medication routes
 ]
 ```
 
-<h3 id="get__reference_medication_routes-responses">Responses</h3>
+<h3 id="get-available-medication-routes-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__reference_medication_routes-responseschema">Response Schema</h3>
+<h3 id="get-available-medication-routes-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -7653,7 +7569,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\_\_reference_medication_units
+## Get available medication units
 
 > Code samples
 
@@ -7790,8 +7706,6 @@ func main() {
 
 `GET /reference/medication_units`
 
-_Get available medication units_
-
 Get available medication units
 
 > Example responses
@@ -7807,14 +7721,14 @@ Get available medication units
 ]
 ```
 
-<h3 id="get__reference_medication_units-responses">Responses</h3>
+<h3 id="get-available-medication-units-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__reference_medication_units-responseschema">Response Schema</h3>
+<h3 id="get-available-medication-units-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -7834,7 +7748,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\_\_reference_specialty
+## Get all specialties
 
 > Code samples
 
@@ -7971,11 +7885,9 @@ func main() {
 
 `GET /reference/specialty`
 
-_Get all specialties_
-
 Get all specialties
 
-<h3 id="get__reference_specialty-parameters">Parameters</h3>
+<h3 id="get-all-specialties-parameters">Parameters</h3>
 
 | Name | In    | Type   | Required | Description       |
 | ---- | ----- | ------ | -------- | ----------------- |
@@ -7994,13 +7906,13 @@ Get all specialties
 ]
 ```
 
-<h3 id="get__reference_specialty-responses">Responses</h3>
+<h3 id="get-all-specialties-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema |
 | ------ | ------------------------------------------------------- | ----------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1) | OK          | Inline |
 
-<h3 id="get__reference_specialty-responseschema">Response Schema</h3>
+<h3 id="get-all-specialties-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -8015,7 +7927,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__reference_specialty_{specialty_id}
+## Get specialty by ID
 
 > Code samples
 
@@ -8152,11 +8064,9 @@ func main() {
 
 `GET /reference/specialty/{specialty_id}`
 
-_Get specialty by ID_
-
 Get specialty by ID
 
-<h3 id="get__reference_specialty_{specialty_id}-parameters">Parameters</h3>
+<h3 id="get-specialty-by-id-parameters">Parameters</h3>
 
 | Name         | In   | Type    | Required | Description  |
 | ------------ | ---- | ------- | -------- | ------------ |
@@ -8173,7 +8083,7 @@ Get specialty by ID
 }
 ```
 
-<h3 id="get__reference_specialty_{specialty_id}-responses">Responses</h3>
+<h3 id="get-specialty-by-id-responses">Responses</h3>
 
 | Status | Meaning                                                 | Description | Schema                        |
 | ------ | ------------------------------------------------------- | ----------- | ----------------------------- |
@@ -8184,7 +8094,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\_\_reference_languages
+## Get all langauges
 
 > Code samples
 
@@ -8321,11 +8231,9 @@ func main() {
 
 `GET /reference/languages`
 
-_Get all langauges_
-
 Get all langauges
 
-<h3 id="get__reference_languages-parameters">Parameters</h3>
+<h3 id="get-all-langauges-parameters">Parameters</h3>
 
 | Name | In    | Type   | Required | Description      |
 | ---- | ----- | ------ | -------- | ---------------- |
@@ -8344,14 +8252,14 @@ Get all langauges
 ]
 ```
 
-<h3 id="get__reference_languages-responses">Responses</h3>
+<h3 id="get-all-langauges-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema |
 | ------ | --------------------------------------------------------------- | ---------------- | ------ |
 | 200    | [OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)         | OK               | Inline |
 | 204    | [No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5) | No results found | None   |
 
-<h3 id="get__reference_languages-responseschema">Response Schema</h3>
+<h3 id="get-all-langauges-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -8366,7 +8274,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__reference_languages_{language_id}
+## Get a langauge
 
 > Code samples
 
@@ -8503,11 +8411,9 @@ func main() {
 
 `GET /reference/languages/{language_id}`
 
-_Get a langauge_
-
 Get a langauge
 
-<h3 id="get__reference_languages_{language_id}-parameters">Parameters</h3>
+<h3 id="get-a-langauge-parameters">Parameters</h3>
 
 | Name        | In   | Type   | Required | Description |
 | ----------- | ---- | ------ | -------- | ----------- |
@@ -8524,7 +8430,7 @@ Get a langauge
 }
 ```
 
-<h3 id="get__reference_languages_{language_id}-responses">Responses</h3>
+<h3 id="get-a-langauge-responses">Responses</h3>
 
 | Status | Meaning                                                         | Description      | Schema                                  |
 | ------ | --------------------------------------------------------------- | ---------------- | --------------------------------------- |
@@ -8538,7 +8444,7 @@ Bearer
 
 <h1 id="inxite-api-share-requests">Share Requests</h1>
 
-## post\__shares_{shareHash}\_requests
+## Request share Access
 
 > Code samples
 
@@ -8683,8 +8589,6 @@ func main() {
 
 `POST /shares/{shareHash}/requests`
 
-_Request share Access_
-
 Request share access, it uses user_id if request comes with token or else response with 401 No User Information Found.
 
 > Body parameter
@@ -8698,18 +8602,17 @@ phone: string
 postal_code: string
 ```
 
-<h3 id="post__shares_{sharehash}_requests-parameters">Parameters</h3>
+<h3 id="request-share-access-parameters">Parameters</h3>
 
-| Name           | In   | Type   | Required | Description                                |
-| -------------- | ---- | ------ | -------- | ------------------------------------------ |
-| shareHash      | path | string | true     | Share Identifier (Not row id, use Hash)    |
-| body           | body | object | false    | none                                       |
-| » firstname    | body | string | false    | Requester first name, Required if no token |
-| » lastname     | body | string | false    | Requester last name, Required if no token  |
-| » organization | body | string | false    | Requester organization                     |
-| » email        | body | string | false    | Requester email address                    |
-| » phone        | body | string | false    | Requester phone number                     |
-| » postal_code  | body | string | false    | Requester postal code                      |
+| Name         | In   | Type   | Required | Description                                |
+| ------------ | ---- | ------ | -------- | ------------------------------------------ |
+| shareHash    | path | string | true     | Share Identifier (Not row id, use Hash)    |
+| firstname    | body | string | false    | Requester first name, Required if no token |
+| lastname     | body | string | false    | Requester last name, Required if no token  |
+| organization | body | string | false    | Requester organization                     |
+| email        | body | string | false    | Requester email address                    |
+| phone        | body | string | false    | Requester phone number                     |
+| postal_code  | body | string | false    | Requester postal code                      |
 
 > Example responses
 
@@ -8723,7 +8626,7 @@ postal_code: string
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -8736,13 +8639,13 @@ postal_code: string
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -8752,7 +8655,7 @@ postal_code: string
 }
 ```
 
-<h3 id="post__shares_{sharehash}_requests-responses">Responses</h3>
+<h3 id="request-share-access-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                               | Schema                              |
 | ------ | ---------------------------------------------------------------- | ----------------------------------------- | ----------------------------------- |
@@ -8765,7 +8668,7 @@ postal_code: string
 This operation does not require authentication
 </aside>
 
-## get\__shares_{shareHash}_requests_{requestHash}
+## Get Particular request status or data
 
 > Code samples
 
@@ -8896,11 +8799,9 @@ func main() {
 
 `GET /shares/{shareHash}/requests/{requestHash}`
 
-_Get Particular request status or data_
-
 Get Particular request status or data
 
-<h3 id="get__shares_{sharehash}_requests_{requesthash}-parameters">Parameters</h3>
+<h3 id="get-particular-request-status-or-data-parameters">Parameters</h3>
 
 | Name        | In   | Type   | Required | Description                               |
 | ----------- | ---- | ------ | -------- | ----------------------------------------- |
@@ -8919,7 +8820,7 @@ Get Particular request status or data
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -8932,13 +8833,13 @@ Get Particular request status or data
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -8948,7 +8849,7 @@ Get Particular request status or data
 }
 ```
 
-<h3 id="get__shares_{sharehash}_requests_{requesthash}-responses">Responses</h3>
+<h3 id="get-particular-request-status-or-data-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                               | Schema                              |
 | ------ | ---------------------------------------------------------------- | ----------------------------------------- | ----------------------------------- |
@@ -8961,7 +8862,7 @@ Get Particular request status or data
 This operation does not require authentication
 </aside>
 
-## patch\__shares_{shareHash}_requests_{requestHash}
+## Update an existing request
 
 > Code samples
 
@@ -9101,8 +9002,6 @@ func main() {
 
 `PATCH /shares/{shareHash}/requests/{requestHash}`
 
-_Update an existing request_
-
 Update an existing request
 
 > Body parameter
@@ -9111,23 +9010,22 @@ Update an existing request
 status: approve
 ```
 
-<h3 id="patch__shares_{sharehash}_requests_{requesthash}-parameters">Parameters</h3>
+<h3 id="update-an-existing-request-parameters">Parameters</h3>
 
 | Name        | In   | Type   | Required | Description                               |
 | ----------- | ---- | ------ | -------- | ----------------------------------------- |
 | shareHash   | path | string | true     | Share Identifier (Not row id, use Hash)   |
 | requestHash | path | string | true     | Request Identifier (Not row id, use Hash) |
-| body        | body | object | false    | none                                      |
-| » status    | body | string | false    | Request Status                            |
+| status      | body | string | false    | Request Status                            |
 
 #### Enumerated Values
 
 | Parameter | Value   |
 | --------- | ------- |
-| » status  | approve |
-| » status  | Approve |
-| » status  | decline |
-| » status  | Decline |
+| status    | approve |
+| status    | Approve |
+| status    | decline |
+| status    | Decline |
 
 > Example responses
 
@@ -9141,7 +9039,7 @@ status: approve
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9154,13 +9052,13 @@ status: approve
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9170,7 +9068,7 @@ status: approve
 }
 ```
 
-<h3 id="patch__shares_{sharehash}_requests_{requesthash}-responses">Responses</h3>
+<h3 id="update-an-existing-request-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                               | Schema                              |
 | ------ | ---------------------------------------------------------------- | ----------------------------------------- | ----------------------------------- |
@@ -9183,7 +9081,7 @@ status: approve
 This operation does not require authentication
 </aside>
 
-## post\__shares_{shareHash}_requests_{requestHash}
+## Validate share hash and request hash for given params
 
 > Code samples
 
@@ -9326,8 +9224,6 @@ func main() {
 
 `POST /shares/{shareHash}/requests/{requestHash}`
 
-_Validate share hash and request hash for given params_
-
 Validate share hash and request hash for given params (currently used for direct access)
 
 > Body parameter
@@ -9339,17 +9235,16 @@ email: string
 phone: string
 ```
 
-<h3 id="post__shares_{sharehash}_requests_{requesthash}-parameters">Parameters</h3>
+<h3 id="validate-share-hash-and-request-hash-for-given-params-parameters">Parameters</h3>
 
-| Name         | In   | Type   | Required | Description                               |
-| ------------ | ---- | ------ | -------- | ----------------------------------------- |
-| shareHash    | path | string | true     | Share Identifier (Not row id, use Hash)   |
-| requestHash  | path | string | true     | Request Identifier (Not row id, use Hash) |
-| body         | body | object | false    | none                                      |
-| » first_name | body | string | true     | First name                                |
-| » last_name  | body | string | true     | Last name                                 |
-| » email      | body | string | false    | Email address                             |
-| » phone      | body | string | false    | Phone number                              |
+| Name        | In   | Type   | Required | Description                               |
+| ----------- | ---- | ------ | -------- | ----------------------------------------- |
+| shareHash   | path | string | true     | Share Identifier (Not row id, use Hash)   |
+| requestHash | path | string | true     | Request Identifier (Not row id, use Hash) |
+| first_name  | body | string | true     | First name                                |
+| last_name   | body | string | true     | Last name                                 |
+| email       | body | string | false    | Email address                             |
+| phone       | body | string | false    | Phone number                              |
 
 > Example responses
 
@@ -9363,7 +9258,7 @@ phone: string
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9376,13 +9271,13 @@ phone: string
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9392,7 +9287,7 @@ phone: string
 }
 ```
 
-<h3 id="post__shares_{sharehash}_requests_{requesthash}-responses">Responses</h3>
+<h3 id="validate-share-hash-and-request-hash-for-given-params-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                             | Schema                              |
 | ------ | ---------------------------------------------------------------- | --------------------------------------- | ----------------------------------- |
@@ -9405,7 +9300,7 @@ phone: string
 This operation does not require authentication
 </aside>
 
-## get\_\_sharesRequests
+## Get all requests status
 
 > Code samples
 
@@ -9543,11 +9438,9 @@ func main() {
 
 `GET /sharesRequests`
 
-_Get all requests status_
-
 Get all requests status
 
-<h3 id="get__sharesrequests-parameters">Parameters</h3>
+<h3 id="get-all-requests-status-parameters">Parameters</h3>
 
 | Name   | In    | Type    | Required | Description                    |
 | ------ | ----- | ------- | -------- | ------------------------------ |
@@ -9566,7 +9459,7 @@ Get all requests status
     "share_hash": "string",
     "request_id": "string",
     "share_direct_image_url": "string",
-    "expiration_date": "2019-06-18T13:50:07Z",
+    "expiration_date": "2019-06-18T14:54:51Z",
     "share": {
       "first_name": "string",
       "last_name": "string",
@@ -9579,13 +9472,13 @@ Get all requests status
       "postal_code": "string",
       "access_type": "email",
       "created": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -9596,7 +9489,7 @@ Get all requests status
 ]
 ```
 
-<h3 id="get__sharesrequests-responses">Responses</h3>
+<h3 id="get-all-requests-status-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                               | Schema |
 | ------ | ---------------------------------------------------------------- | ----------------------------------------- | ------ |
@@ -9605,7 +9498,7 @@ Get all requests status
 | 400    | [Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1) | Errors                                    | None   |
 | 401    | [Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)  | Code Expired or No User information found | None   |
 
-<h3 id="get__sharesrequests-responseschema">Response Schema</h3>
+<h3 id="get-all-requests-status-responseschema">Response Schema</h3>
 
 Status Code **200**
 
@@ -9657,7 +9550,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Bearer
 </aside>
 
-## get\__sharesRequests_{requestHash}
+## Get an existing request status or data
 
 > Code samples
 
@@ -9794,11 +9687,9 @@ func main() {
 
 `GET /sharesRequests/{requestHash}`
 
-_Get an existing request status or data_
-
 Get an existing request status or data. Same as GET /shares/{shareHash}/requests/{requestHash}
 
-<h3 id="get__sharesrequests_{requesthash}-parameters">Parameters</h3>
+<h3 id="get-an-existing-request-status-or-data-parameters">Parameters</h3>
 
 | Name        | In   | Type   | Required | Description                               |
 | ----------- | ---- | ------ | -------- | ----------------------------------------- |
@@ -9816,7 +9707,7 @@ Get an existing request status or data. Same as GET /shares/{shareHash}/requests
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -9829,13 +9720,13 @@ Get an existing request status or data. Same as GET /shares/{shareHash}/requests
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -9845,7 +9736,7 @@ Get an existing request status or data. Same as GET /shares/{shareHash}/requests
 }
 ```
 
-<h3 id="get__sharesrequests_{requesthash}-responses">Responses</h3>
+<h3 id="get-an-existing-request-status-or-data-responses">Responses</h3>
 
 | Status | Meaning                                                          | Description                               | Schema                              |
 | ------ | ---------------------------------------------------------------- | ----------------------------------------- | ----------------------------------- |
@@ -9886,13 +9777,13 @@ Bearer
   },
   "status": "pending",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -9938,7 +9829,7 @@ Bearer
 
 ```json
 {
-  "date": "2019-06-18T13:50:07Z",
+  "date": "2019-06-18T14:54:51Z",
   "first_name": "string",
   "last_name": "string",
   "user_id": 0
@@ -10080,13 +9971,13 @@ _Patient Employer information_
         "text": "string"
       },
       "created": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
       },
       "updated": {
-        "date": "2019-06-18T13:50:07Z",
+        "date": "2019-06-18T14:54:51Z",
         "first_name": "string",
         "last_name": "string",
         "user_id": 0
@@ -10094,7 +9985,7 @@ _Patient Employer information_
     }
   ],
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -10135,13 +10026,13 @@ _Patient Employer information_
     "text": "string"
   },
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -10758,7 +10649,7 @@ _Patient Employer information_
   "deceased_reason": "string",
   "deceased_date": "2019-06-18",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
@@ -11181,7 +11072,7 @@ _Patient Employer information_
 ```json
 {
   "patient_id": 0,
-  "date_time": "2019-06-18T13:50:07Z"
+  "date_time": "2019-06-18T14:54:51Z"
 }
 ```
 
@@ -11242,7 +11133,7 @@ _Patient Employer information_
 
 ```json
 {
-  "date": "2019-06-18T13:50:07Z",
+  "date": "2019-06-18T14:54:51Z",
   "first_name": "string",
   "last_name": "string",
   "user_id": 0
@@ -11331,14 +11222,14 @@ _Information on the individual who last updated the record_
   "name": "string",
   "hash": "string",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "anonymous": true,
   "active": true,
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share_url": "string",
   "image_url": "string",
   "image": "string",
@@ -11378,7 +11269,7 @@ _Information on the individual who last updated the record_
   "share_hash": "string",
   "request_id": "string",
   "share_direct_image_url": "string",
-  "expiration_date": "2019-06-18T13:50:07Z",
+  "expiration_date": "2019-06-18T14:54:51Z",
   "share": {
     "first_name": "string",
     "last_name": "string",
@@ -11391,13 +11282,13 @@ _Information on the individual who last updated the record_
     "postal_code": "string",
     "access_type": "email",
     "created": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
     },
     "updated": {
-      "date": "2019-06-18T13:50:07Z",
+      "date": "2019-06-18T14:54:51Z",
       "first_name": "string",
       "last_name": "string",
       "user_id": 0
@@ -11463,13 +11354,13 @@ _Information on the individual who created the share_
   "postal_code": "string",
   "access_type": "email",
   "created": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
   },
   "updated": {
-    "date": "2019-06-18T13:50:07Z",
+    "date": "2019-06-18T14:54:51Z",
     "first_name": "string",
     "last_name": "string",
     "user_id": 0
